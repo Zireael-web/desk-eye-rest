@@ -1,0 +1,46 @@
+# Xcode
+DeskEyeRest.xcodeproj/
+DeskEyeRest.xcworkspace/
+xcuserdata/
+*.xcuserstate
+build/
+DerivedData/
+*.swiftpm/
+
+# Swift Package Manager
+.build/
+Packages/
+Package.resolved
+
+# macOS
+.DS_Store
+*.swp
+.idea/
+
+# Logs / scratch
+*.log
+.Trashes
+*.orig
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.xcconfig.local
+*.xcconfig.user
+*.p8
+*.pem
+*.key
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+*.entitlements.local
+
+# Local app data and distributable build products
+history.json
+exercises.json
+*.app/
+*.xcarchive/
+*.dSYM/
+*.ipa

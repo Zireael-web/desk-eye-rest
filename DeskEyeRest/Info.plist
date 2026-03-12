@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>$(DEVELOPMENT_LANGUAGE)</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>$(PRODUCT_NAME)</string>
+    <key>CFBundlePackageType</key>
+    <string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+    <key>CFBundleShortVersionString</key>
+    <string>$(MARKETING_VERSION)</string>
+    <key>CFBundleVersion</key>
+    <string>$(CURRENT_PROJECT_VERSION)</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+
+    <!-- Menu-bar only app: no Dock icon, no main window in Window menu -->
+    <key>LSUIElement</key>
+    <true/>
+
+    <!-- Bundled custom fonts (loaded via CTFontManagerRegisterFontsForURL at launch) -->
+    <key>ATSApplicationFontsPath</key>
+    <string>Fonts</string>
+
+    <key>NSHumanReadableCopyright</key>
+    <string>Copyright © 2026 DeskEyeRest contributors.</string>
+
+    <!-- Required by INFocusStatusCenter — DeskEyeRest reads the Focus state to
+         pause break reminders during Do-Not-Disturb / Work / etc. -->
+    <key>NSFocusStatusUsageDescription</key>
+    <string>DeskEyeRest pauses break reminders while a macOS Focus mode is active so that work and quiet hours stay uninterrupted.</string>
+</dict>
+</plist>
