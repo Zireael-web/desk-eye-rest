@@ -1,6 +1,12 @@
+![DeskEyeRest — illustrated project overview](docs/assets/cover.svg)
+
 # DeskEyeRest
 
 DeskEyeRest is a local-first macOS menu-bar app for structured screen breaks and focus routines. It is built with SwiftUI for macOS 14 and later.
+
+[Features](#features) · [Build from source](#build-from-source) · [Privacy](#privacy) · [Development notes](#development-notes)
+
+**Swift · SwiftUI · macOS 14+**
 
 ## Features
 
