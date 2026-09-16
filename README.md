@@ -1,61 +1,63 @@
-![DeskEyeRest — illustrated project overview](docs/assets/cover.svg)
+![DeskEyeRest — иллюстрация проекта](docs/assets/cover.svg)
 
 # DeskEyeRest
 
-DeskEyeRest is a local-first macOS menu-bar app for structured screen breaks and focus routines. It is built with SwiftUI for macOS 14 and later.
+Приложение в строке меню macOS: помогает планировать перерывы от экрана и чередовать работу с отдыхом. Работает локально, написано на SwiftUI для macOS 14 и новее.
 
-[Features](#features) · [Build from source](#build-from-source) · [Privacy](#privacy) · [Development notes](#development-notes)
+Мой pet-проект для повседневного использования и изучения Swift и SwiftUI. Основное направление моей работы — фронтенд; здесь пробую разработку нативных приложений.
+
+[Возможности](#возможности) · [Сборка](#сборка-из-исходников) · [Приватность](#приватность) · [Разработка](#разработка)
 
 **Swift · SwiftUI · macOS 14+**
 
-## Features
+## Возможности
 
-- Configurable short and long break cycles.
-- Full-screen break, clock-out, and flash reminders.
-- Working-hours schedules, notifications, launch-at-login support, and global hotkeys.
-- Local break history and editable exercise prompts.
-- Optional pause signals based on idle time, active audio input, and macOS Focus status when authorization is already available.
+- Настраиваемые циклы коротких и длинных перерывов.
+- Полноэкранные напоминания о перерыве и завершении рабочего дня, короткие напоминания-вспышки.
+- Рабочее расписание, уведомления, запуск при входе в систему и глобальные горячие клавиши.
+- Локальная история перерывов и редактируемые подсказки с упражнениями.
+- Опциональная приостановка таймера по времени бездействия, использованию аудиовхода и состоянию режима «Фокусирование» macOS — если доступ к этому состоянию уже разрешён.
 
-## Privacy
+## Приватность
 
-DeskEyeRest keeps settings in UserDefaults and stores break history and custom exercises under the current user's Application Support directory. The app source contains no network client or telemetry.
+Настройки хранятся в `UserDefaults`, история перерывов и пользовательские упражнения — в каталоге `Application Support` текущего пользователя. В исходном коде приложения нет сетевого клиента или телеметрии.
 
-Meeting detection checks whether an audio-input device is in use; it does not capture or record audio. Focus detection reads only the current Focus-state boolean when macOS has already authorized access.
+Для определения возможной встречи приложение проверяет, используется ли устройство аудиовхода. Звук при этом не захватывается и не записывается. Проверка режима «Фокусирование» читает только его текущее логическое состояние и только при уже выданном разрешении macOS.
 
-## Current limitation
+## Текущее ограничение
 
-The video-detection setting is reserved for future work. The current implementation intentionally reports no active video, so it does not pause the timer.
+Настройка определения активного видео оставлена для будущей реализации. Сейчас соответствующая проверка всегда сообщает, что активного видео нет, и не приостанавливает таймер.
 
-## Requirements
+## Требования
 
-- macOS 14 or later.
-- Xcode with Command Line Tools.
+- macOS 14 или новее.
+- Xcode с Command Line Tools.
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen).
 
-## Build from source
+## Сборка из исходников
 
-From the repository root:
+В корне репозитория выполните:
 
 ```sh
 xcodegen generate
 open DeskEyeRest.xcodeproj
 ```
 
-In Xcode, select the `DeskEyeRest` scheme and the `My Mac` destination, then run the app. The generated `.xcodeproj` is intentionally ignored because `project.yml` is the source of truth.
+В Xcode выберите схему `DeskEyeRest`, устройство `My Mac` и запустите приложение. Сгенерированный `.xcodeproj` намеренно не хранится в Git: конфигурация проекта задаётся в `project.yml`.
 
-## Project layout
+## Структура проекта
 
 ```text
 DeskEyeRest/
-├── DeskEyeRest/          App target: state, timers, detectors, persistence, UI, and resources
-├── DeskEyeRestTests/     Unit tests
-├── project.yml           XcodeGen project configuration
-├── build.sh              Optional local command-line build helper
+├── DeskEyeRest/          Состояние, таймеры, детекторы, хранение данных, UI и ресурсы
+├── DeskEyeRestTests/     Модульные тесты
+├── project.yml          Конфигурация XcodeGen
+├── build.sh             Вспомогательный скрипт локальной сборки
 └── THIRD_PARTY_NOTICES.md
 ```
 
-## Development notes
+## Разработка
 
-- Edit source files under `DeskEyeRest/`, then rerun `xcodegen generate` if the project structure changes.
-- Run tests with `xcodebuild test -scheme DeskEyeRest` after generating the Xcode project.
-- See `THIRD_PARTY_NOTICES.md` for bundled-font notices.
+- Исходники находятся в `DeskEyeRest/`. После изменения структуры проекта повторите `xcodegen generate`.
+- После генерации проекта запустите тесты: `xcodebuild test -scheme DeskEyeRest`.
+- Сведения об используемых шрифтах: [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) (на английском).
