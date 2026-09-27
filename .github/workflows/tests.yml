@@ -1,0 +1,21 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Generate the Xcode project
+        run: xcodegen generate
+      - name: Unit tests
+        run: xcodebuild test -project DeskEyeRest.xcodeproj -scheme DeskEyeRest -destination 'platform=macOS' CODE_SIGN_IDENTITY=-

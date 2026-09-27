@@ -6,6 +6,8 @@
 
 A macOS menu bar app that helps you plan screen breaks and alternate work with rest. It runs locally and is written in SwiftUI for macOS 14 and newer.
 
+**[Download for macOS](https://github.com/Zireael-web/desk-eye-rest/releases/latest)** (Apple Silicon, macOS 14+)
+
 A personal side project for everyday use and for learning Swift and SwiftUI. My main field is frontend development; here I try building native apps.
 
 [Features](#features) · [Build](#build-from-source) · [Privacy](#privacy) · [Development](#development)
