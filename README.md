@@ -1,71 +1,69 @@
-![DeskEyeRest — project illustration](docs/assets/cover.svg)
+![DeskEyeRest — иллюстрация проекта](docs/assets/cover.svg)
 
 # DeskEyeRest
 
-**English** | [Русский](README.ru.md)
+Приложение в строке меню macOS: помогает планировать перерывы от экрана и чередовать работу с отдыхом. Работает локально, написано на SwiftUI для macOS 14 и новее.
 
-A macOS menu bar app that helps you plan screen breaks and alternate work with rest. It runs locally and is written in SwiftUI for macOS 14 and newer.
+**[Скачать для macOS](https://github.com/Zireael-web/desk-eye-rest/releases/latest)** (Apple Silicon, macOS 14+)
 
-**[Download for macOS](https://github.com/Zireael-web/desk-eye-rest/releases/latest)** (Apple Silicon, macOS 14+)
+Мой pet-проект для повседневного использования и изучения Swift и SwiftUI. Основное направление моей работы — фронтенд; здесь пробую разработку нативных приложений.
 
-A personal side project for everyday use and for learning Swift and SwiftUI. My main field is frontend development; here I try building native apps.
-
-[Features](#features) · [Build](#build-from-source) · [Privacy](#privacy) · [Development](#development)
+[Возможности](#возможности) · [Сборка](#сборка-из-исходников) · [Приватность](#приватность) · [Разработка](#разработка)
 
 **Swift · SwiftUI · macOS 14+**
 
-## Features
+## Возможности
 
-- Configurable cycles of short and long breaks.
-- Full-screen break and end-of-workday reminders, plus short flash reminders.
-- Working hours, notifications, launch at login and global hotkeys.
-- Local break history and editable exercise tips.
-- Optional timer pause based on idle time, audio input use and the macOS Focus state — when access to that state has already been granted.
+- Настраиваемые циклы коротких и длинных перерывов.
+- Полноэкранные напоминания о перерыве и завершении рабочего дня, короткие напоминания-вспышки.
+- Рабочее расписание, уведомления, запуск при входе в систему и глобальные горячие клавиши.
+- Локальная история перерывов и редактируемые подсказки с упражнениями.
+- Опциональная приостановка таймера по времени бездействия, использованию аудиовхода и состоянию режима «Фокусирование» macOS — если доступ к этому состоянию уже разрешён.
 
-## Privacy
+## Приватность
 
-Settings are stored in `UserDefaults`; break history and custom exercises live in the current user's `Application Support` folder. The app's source code has no network client and no telemetry.
+Настройки хранятся в `UserDefaults`, история перерывов и пользовательские упражнения — в каталоге `Application Support` текущего пользователя. В исходном коде приложения нет сетевого клиента или телеметрии.
 
-To detect a likely meeting, the app checks whether an audio input device is in use. No sound is captured or recorded. The Focus check reads only its current on/off state, and only when macOS permission has already been granted.
+Для определения возможной встречи приложение проверяет, используется ли устройство аудиовхода. Звук при этом не захватывается и не записывается. Проверка режима «Фокусирование» читает только его текущее логическое состояние и только при уже выданном разрешении macOS.
 
-## Current limitation
+## Текущее ограничение
 
-Detection of active video is left for a future implementation. For now the check always reports that no video is playing and never pauses the timer.
+Настройка определения активного видео оставлена для будущей реализации. Сейчас соответствующая проверка всегда сообщает, что активного видео нет, и не приостанавливает таймер.
 
-## Requirements
+## Требования
 
-- macOS 14 or newer.
-- Xcode with Command Line Tools.
+- macOS 14 или новее.
+- Xcode с Command Line Tools.
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen).
 
-## Build from source
+## Сборка из исходников
 
-From the repository root:
+В корне репозитория выполните:
 
 ```sh
 xcodegen generate
 open DeskEyeRest.xcodeproj
 ```
 
-In Xcode, choose the `DeskEyeRest` scheme and the `My Mac` destination, then run the app. The generated `.xcodeproj` is intentionally not stored in Git: the project configuration lives in `project.yml`.
+В Xcode выберите схему `DeskEyeRest`, устройство `My Mac` и запустите приложение. Сгенерированный `.xcodeproj` намеренно не хранится в Git: конфигурация проекта задаётся в `project.yml`.
 
-## Project structure
+## Структура проекта
 
 ```text
 DeskEyeRest/
-├── DeskEyeRest/          State, timers, detectors, storage, UI and resources
-├── DeskEyeRestTests/     Unit tests
-├── project.yml          XcodeGen configuration
-├── build.sh             Helper script for local builds
+├── DeskEyeRest/          Состояние, таймеры, детекторы, хранение данных, UI и ресурсы
+├── DeskEyeRestTests/     Модульные тесты
+├── project.yml          Конфигурация XcodeGen
+├── build.sh             Вспомогательный скрипт локальной сборки
 └── THIRD_PARTY_NOTICES.md
 ```
 
-## Development
+## Разработка
 
-- Sources live in `DeskEyeRest/`. After changing the project structure, run `xcodegen generate` again.
-- After generating the project, run the tests: `xcodebuild test -scheme DeskEyeRest`.
-- Details about the bundled fonts: [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+- Исходники находятся в `DeskEyeRest/`. После изменения структуры проекта повторите `xcodegen generate`.
+- После генерации проекта запустите тесты: `xcodebuild test -scheme DeskEyeRest`.
+- Сведения об используемых шрифтах: [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) (на английском).
 
-## License
+## Лицензия
 
-The code is released under the [MIT License](LICENSE). Bundled fonts are distributed under the SIL Open Font License — see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+Код распространяется по [лицензии MIT](LICENSE). Встроенные шрифты — по лицензии SIL Open Font License, подробности в [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
